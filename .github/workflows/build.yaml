@@ -12,9 +12,9 @@ jobs:
       - name: Set up date and version
         id: vars
         run: |
-          TIMESTAMP=$(date +'%Y-%m-%d-%H-%M')
+          TIMESTAMP=$(date +'%Y-%m-%d/%H:%M')
           COMMIT_HASH=$(git rev-parse --short "$GITHUB_SHA")
-          VERSION="v1.0.0"  # You can update this as needed, or fetch it from a version file
+          VERSION=$(cat version.txt)
           echo "TIMESTAMP=${TIMESTAMP}" >> $GITHUB_ENV
           echo "COMMIT_HASH=${COMMIT_HASH}" >> $GITHUB_ENV
           echo "VERSION=${VERSION}" >> $GITHUB_ENV

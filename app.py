@@ -14,6 +14,7 @@ db = client["blog"]
 collection = db["posts"]
 
 
+# Test
 @app.route("/posts", methods=["GET"])
 def get_all_posts():
     cursor = collection.find()

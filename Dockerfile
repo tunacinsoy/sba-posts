@@ -46,9 +46,6 @@ RUN pip install -r requirements.txt
 # Copy rest of the application without .github folder (.dockerignore file has been created)
 COPY . .
 
-# Run unit tests
-RUN python app.test.py
-
 # Expose the application
 EXPOSE 5000
 

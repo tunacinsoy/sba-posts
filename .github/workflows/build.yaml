@@ -60,7 +60,7 @@ jobs:
       - name: Run Unit Tests (Post-Build)
         run: |
           docker run --rm ${{ secrets.DOCKER_USER }}/sba-posts:${{ env.IMAGE_SUFFIX }} \
-          python -m unittest test.py
+          python3 -m unittest test.py
 
       # Push the image
       - name: Push the Docker image

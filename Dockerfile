@@ -55,5 +55,7 @@ EXPOSE 5000
 # Running `docker run myflaskapp shell` results in `flask shell`.
 # ENTRYPOINT ["flask"]
 # CMD ["run"]
-ENTRYPOINT ["/bin/sh"]
+
+# Default entrypoint
+ENTRYPOINT ["/bin/sh", "-c"]
 CMD ["flask", "run"]

@@ -16,10 +16,7 @@ jobs:
           TIMESTAMP=$(date +'%Y.%m.%d.%H.%M')
           COMMIT_HASH=$(git rev-parse --short "$GITHUB_SHA")
           VERSION=$(cat version.txt)
-          IMAGE_SUFFIX="${TIMESTAMP}-${COMMIT_HASH}-${VERSION}"
-          echo "TIMESTAMP=${TIMESTAMP}" >> $GITHUB_ENV
-          echo "COMMIT_HASH=${COMMIT_HASH}" >> $GITHUB_ENV
-          echo "VERSION=${VERSION}" >> $GITHUB_ENV
+          IMAGE_SUFFIX="${VERSION}-${TIMESTAMP}-${COMMIT_HASH}"
           echo "IMAGE_SUFFIX=${IMAGE_SUFFIX}" >> $GITHUB_ENV
 
       # Set up python

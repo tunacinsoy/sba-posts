@@ -53,5 +53,7 @@ EXPOSE 5000
 # while CMD provides the default subcommand run, which can be overridden by specifying another subcommand like shell.
 # Running `docker run myflaskapp` results in `flask run`.
 # Running `docker run myflaskapp shell` results in `flask shell`.
-ENTRYPOINT ["flask"]
-CMD ["run"]
+# ENTRYPOINT ["flask"]
+# CMD ["run"]
+ENTRYPOINT ["/bin/sh"]
+CMD ["flask", "run"]

@@ -54,7 +54,7 @@ jobs:
         # Scan Image for Vulnerabilities
       - name: Scan Image for Vulnerabilities
         id: vul-scan
-        run: grype -f critical ${{ secrets.DOCKER_USER }}/mdo-posts:${{ env.IMAGE_SUFFIX }}
+        run: grype -f critical ${{ secrets.DOCKER_USER }}/sba-posts:${{ env.IMAGE_SUFFIX }}
 
       # Run the same unit test within docker container
       - name: Run Unit Tests (Post-Build)

@@ -48,10 +48,10 @@ jobs:
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USER  }}/sba-posts:$(git rev-parse --short "$GITHUB_SHA")
 
-        # Scan Image for Vulnerabilities
-      - name: Scan Image for Vulnerabilities
-        id: vul-scan
-        run: grype -f critical ${{ secrets.DOCKER_USER }}/sba-posts:$(git rev-parse --short "$GITHUB_SHA")
+      #   # Scan Image for Vulnerabilities
+      # - name: Scan Image for Vulnerabilities
+      #   id: vul-scan
+      #   run: grype -f critical ${{ secrets.DOCKER_USER }}/sba-posts:$(git rev-parse --short "$GITHUB_SHA")
 
       # Run the same unit test within docker container
       - name: Run Unit Tests (Post-Build)

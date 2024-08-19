@@ -62,12 +62,34 @@
 
 
 ## Template
+# Set the base image
 FROM python:3.8-slim-bullseye
+
+# Set environment variables
 ENV FLASK_APP=app.py
 ENV FLASK_RUN_HOST=0.0.0.0
-RUN apk add --no-cache gcc musl-dev linux-headers
+
+# Install necessary packages
+# We update the package list, install the packages, and clean up to keep the image small.
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    gcc \
+    libpq-dev \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set working directory
+WORKDIR /app
+
+# Copy the requirements file and install dependencies
 COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt
-EXPOSE 5000
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of the application
 COPY . .
+
+# Expose the application port
+EXPOSE 5000
+
+# Set the default command to run the Flask application
 CMD ["flask", "run"]
